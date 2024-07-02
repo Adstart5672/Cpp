@@ -22,5 +22,7 @@ int main(int argc, char *argv[]) {
   std::cout << pp << std::endl;
   std::cout << fg << std::endl;
   std::cout << isGay << std::endl;
+  std::cout << hp.length() << std::endl;
+  std::cout << hp[0] << std::endl;
   return 0;
 }
