@@ -6,7 +6,7 @@ int main(int argc, char *argv[]) {
   std::cin >> num1;
   std::cout << "\n";
 
-  std::cout << "Enter a second Number: ";
+  std::cout << "Enter a second Number";
   std::cin >> num2;
   std::cout << "\n";
 

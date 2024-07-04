@@ -1,3 +1,4 @@
+#include <alloca.h>
 #include <cmath>
 #include <iostream>
 int main(int argc, char *argv[]) {
