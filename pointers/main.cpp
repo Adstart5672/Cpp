@@ -55,5 +55,9 @@ int main(int argc, char const *argv[])
     std::cout << "Message: " << p_message << std::endl; // Output: Hello, World!
     std::cout << "Address of p_message: " << &p_message << std::endl; // Output: Address of the pointer itself
     std::cout << "Value pointed to by p_message: " << *p_message << std::endl; // Output: H (first character of the string)
+
+    char message[] {"Hello, World!"};
+    message[0] = 'h'; // Changing the first character of the array
+    std::cout << "Modified message: " << message << std::endl; // Output: hello, World!
     return 0;
 }
