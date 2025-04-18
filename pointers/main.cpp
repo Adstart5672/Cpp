@@ -83,6 +83,27 @@ int main(int argc, char const *argv[])
     // Set the pointer to nullptr after deletion to avoid dangling pointer
     dynamic_array = nullptr; // Avoid dangling pointer
     std::cout << "Dynamic array pointer after setting to nullptr: " << dynamic_array << std::endl; // Now points to nullptr
+    
+    {
+        int local_var{100};
+        int *local_ptr_var = new int; 
+        std::cout << "Local variable: " << local_var << std::endl;
+        std::cout << "Local pointer variable: " << local_ptr_var << std::endl; // Address of the dynamically allocated memory
+        std::cout << "Value pointed to by local pointer variable: " << *local_ptr_var << std::endl; // Undefined behavior, as the memory is not initialized
+        delete local_ptr_var; // Deallocate the memory allocated for the local pointer variable
+        local_ptr_var = nullptr; // Avoid dangling pointer
+
+    }
+    // The local_ptr_var goes out of scope here, but the memory is not deallocated
+    // This will cause a memory leak if not handled properly
+    // To avoid this, always deallocate memory when it is no longer needed
+    std::cout << "Local pointer variable goes out of scope" << std::endl;
+    int *nole{new int};
+    *nole = 200; // Assign a value to the dynamically allocated memory
+    std::cout << "Value of nole: " << nole << std::endl; // Undefined behavior, as the memory is not initialized
+    std::cout << "Value pointed to by nole: " << *nole << std::endl;
+    delete nole; // Deallocate the memory allocated for the local pointer variable
+    nole = nullptr; // Avoid dangling pointer
 
     return 0;
 }
