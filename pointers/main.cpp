@@ -59,5 +59,30 @@ int main(int argc, char const *argv[])
     char message[] {"Hello, World!"};
     message[0] = 'h'; // Changing the first character of the array
     std::cout << "Modified message: " << message << std::endl; // Output: hello, World!
+
+    //Initialize the pointer with dynamic memory allocation
+    //Dynamically allocate memory at run time and make a pointer point to it
+    int *dynamic_array{nullptr}; // Allocate memory for an array of 5 integers
+    dynamic_array = new int[4]; // Allocate memory for 5 integers
+    dynamic_array[0] = 1;
+    dynamic_array[1] = 2;
+    dynamic_array[2] = 3;
+    dynamic_array[3] = 4;
+    dynamic_array[4] = 5; // Initialize the array
+    std::cout << std::endl;
+    for (int i = 0; i < 5; ++i)
+    
+    {
+        std::cout << "Value at index " << i << ": " << *(dynamic_array + i) << std::endl;
+    }
+   
+    // Deallocate the memory allocated for the dynamic array
+    delete[] dynamic_array; // Use delete[] for arrays
+    std::cout << dynamic_array[1] << std::endl; // Undefined behavior, as the memory has been deallocated
+    std::cout << "Dynamic array pointer after deletion: " << dynamic_array << std::endl; // Still points to the same address, but the memory is deallocated
+    // Set the pointer to nullptr after deletion to avoid dangling pointer
+    dynamic_array = nullptr; // Avoid dangling pointer
+    std::cout << "Dynamic array pointer after setting to nullptr: " << dynamic_array << std::endl; // Now points to nullptr
+
     return 0;
 }
