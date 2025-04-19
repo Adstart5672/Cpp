@@ -168,5 +168,54 @@ int main(int argc, char const *argv[])
         std::cout << "Temperature: " << temperatures[i] << std::endl; // Output: 10.5, 20.5, 30.5, 40.5, 50.5, 60.5, 70.5, 80.5, 90.5, 100.5
     }
     
+    // Verbose nullptr check
+    int *p_check{};
+    p_check = nullptr; // Initialize the pointer to nullptr
+    // p_check = new int{100}; // Dynamically allocate memory for an integer
+    if (!(p_check == nullptr))
+    {
+        std::cout << "Pointer is null" << std::endl; // Output: Pointer is null
+    }
+    else
+    {
+        std::cout << "Pointer is not null" << std::endl; // This will not be executed
+    }
+
+    std::cout << "size of p_salaries: " << sizeof(p_salaries) << std::endl; // Output: size of pointer (usually 8 bytes on 64-bit systems)
+    std::cout << "Address of p_salaries: " << &p_salaries << std::endl; // Output: address of the pointer itself
+    // std::cout << "Value pointed to by p_salaries: " << *p_salaries << std::endl; // Undefined behavior, as the pointer is not initialized
+    std::cout << "size of p_students: " << sizeof(p_students) << std::endl; // Output: size of pointer (usually 8 bytes on 64-bit systems)
+    std::cout << "Address of p_students: " << &p_students << std::endl;
+    // std::cout << "Value pointed to by p_students: " << *p_students << std::endl;
+    std::cout << "size of p_scores: " << sizeof(p_scores) << std::endl; // Output: size of pointer (usually 8 bytes on 64-bit systems)
+    std::cout << "Address of p_scores: " << &p_scores << std::endl; // Output: address of the pointer itself
+    // std::cout << "Value pointed to by p_scores: " << *p_scores << std::endl; // Undefined behavior, as the pointer is not initialized
+
+    delete p_check;
+    // if (p_check) {
+    //    delete p_check; // This will not be executed
+        p_check = nullptr; // Avoid dangling pointer
+    //}
+    delete[] temperatures; nullptr;
+    delete[] dynamic_array; // Deallocate the memory allocated for the array of doubles
+    delete[] p_students; // Deallocate the memory allocated for the array of integers
+    delete[] p_scores; // Deallocate the memory allocated for the array of doubles
+    delete[] p_salaries; // Deallocate the memory allocated for the array of doubles
+    temperatures = nullptr; // Avoid dangling pointer
+    dynamic_array = nullptr; // Avoid dangling pointer
+    p_students = nullptr; // Avoid dangling pointer
+    p_scores = nullptr; // Avoid dangling pointer
+    p_salaries = nullptr; // Avoid dangling pointer
+
+    // Static array vs dynamic array
+    int static_array[10] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Static array of integers
+    std::cout << "static_array size: " << std::size(static_array) << std::endl; // Output: 10 (size of the array)
+    for (size_t i = 0; i < std::size(static_array); ++i)
+    {
+        std::cout << "Value at index " << i << ": " << static_array[i] << std::endl; // Output: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    }
+
+    int *dynamic_array2 = new int[10]; // Dynamically allocate memory for an array of integers
+    
     return 0;
 }
