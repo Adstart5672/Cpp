@@ -153,5 +153,20 @@ int main(int argc, char const *argv[])
     p_salaries = nullptr; // Avoid dangling pointer
     p_students = nullptr; // Avoid dangling pointer
     p_scores = nullptr; // Avoid dangling pointer
+
+    /*
+     Pointers are different from arrays in C++
+        - Pointers can be reassigned to point to different memory locations, while arrays cannot be reassigned.
+        - Pointers can be dynamically allocated and deallocated, while arrays have a fixed size and cannot be resized.
+        - Pointers can point to any data type, while arrays are of a specific data type.
+
+    */
+    double *temperatures = new double[size] {10.5, 20.5, 30.5, 40.5, 50.5, 60.5, 70.5, 80.5, 90.5, 100.5}; // Dynamically allocate memory for an array of doubles
+    // std::cout << std::size(temperatures) << std::endl; // Error: cannot use std::size on a pointer
+    for (size_t i = 0; i < size; ++i)
+    {
+        std::cout << "Temperature: " << temperatures[i] << std::endl; // Output: 10.5, 20.5, 30.5, 40.5, 50.5, 60.5, 70.5, 80.5, 90.5, 100.5
+    }
+    
     return 0;
 }
