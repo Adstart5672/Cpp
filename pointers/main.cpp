@@ -39,6 +39,8 @@ int main(int argc, char const *argv[])
 
     std::cout << "Value of var3: " << var3 << std::endl;
     std::cout << "Address of var3: " << &var3 << std::endl;
+    std::cout << "Value pointed to by ptr3: " << *ptr3 << std::endl; // Dereferencing ptr3 to get the value of var3
+    std::cout << "Address of ptr3: " << &ptr3 << std::endl; // Address of the pointer itself
 
     char *p_char_var{nullptr};
     char char_var{'A'};
@@ -105,5 +107,18 @@ int main(int argc, char const *argv[])
     delete nole; // Deallocate the memory allocated for the local pointer variable
     nole = nullptr; // Avoid dangling pointer
 
+    //Writing to a uninitialized pointer
+    //int *uninitialized_ptr; // Uninitialized pointer (contains garbage value)
+    //*uninitialized_ptr = 83;
+    // This will cause undefined behavior, as the pointer is not initialized to a valid memory location
+    // std::cout << "Value pointed to by uninitialized pointer: " << *uninitialized_ptr << std::endl; // Undefined behavior
+    //std::cout << "Dereferencing uninitialized pointer: " << *uninitialized_ptr << std::endl; // Undefined behavior
+    // This will cause a segmentation fault or access violation error, as the pointer is not initialized to a valid memory location
+    // To avoid this, always initialize pointers to nullptr or a valid memory location before dereferencing them
+
+    //int *ptr5{};
+    //*ptr5 = 790; // This will cause undefined behavior, as the pointer is not initialized to a valid memory location
+    //    // std::cout << "Value pointed to by ptr3: " << *ptr5 << std::endl; // Undefined behavior
+    // This will cause a segmentation fault or access violation error, as the pointer is not initialized to a valid memory location
     return 0;
 }

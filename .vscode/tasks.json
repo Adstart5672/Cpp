@@ -3,7 +3,7 @@
         {
             "type": "cppbuild",
             "label": "C/C++: clang++.exe build active file",
-            "command": "/usr/bin/clang++-23",
+            "command": "/usr/bin/clang++-21",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
