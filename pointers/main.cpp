@@ -120,5 +120,38 @@ int main(int argc, char const *argv[])
     //*ptr5 = 790; // This will cause undefined behavior, as the pointer is not initialized to a valid memory location
     //    // std::cout << "Value pointed to by ptr3: " << *ptr5 << std::endl; // Undefined behavior
     // This will cause a segmentation fault or access violation error, as the pointer is not initialized to a valid memory location
+    int *p_number{new int{62}}; // Dynamically allocate memory for an integer
+    p_number = new int{20}; // Dynamically allocate memory for an integer
+    // Cause memory leak, as the previous memory is not deallocated
+    // To avoid this, always deallocate memory when it is no longer needed
+    
+    std::cout << "Value pointed to by p_number: " << *p_number << std::endl; // Output: 20
+    std::cout << "Address of p_number: " << &p_number << std::endl; // Output: Address of the pointer itself
+    delete p_number; // Deallocate the memory allocated for the pointer
+    p_number = nullptr; // Avoid dangling pointer
+
+    // Different way to declare arrays
+    size_t size{10};
+    double *p_salaries {new double[size]}; // Dynamically allocate memory for an array of 10 doubles (contains garbage values)'
+    int *p_students {new (std::nothrow) int[size]{}}; // Dynamically allocate memory for an array of 10 integers (contains garbage values)
+    double *p_scores {new (std::nothrow) double[size]{1,2,3,4,5}}; // Dynamically allocate memory for an array of 10 doubles (contains garbage values)
+    for (size_t i = 0; i < size; ++i)
+    {
+        std::cout << "Value at index " << i << ": " << *(p_salaries + i) << std::endl; // Output: 0 (default value for double)
+        std::cout << "Value at index " << i << ": " << *(p_students + i) << std::endl; // Output: 0 (default value for int)
+        std::cout << "Value at index " << i << ": " << *(p_scores + i) << std::endl; // Output: 1, 2, 3, 4, 5, 0, 0, 0, 0, 0 (default value for double)
+    }
+    if (p_scores){
+        for (size_t i = 0; i < size; ++i)
+        {
+            std::cout << "Value at index " << i << ": " << *(p_scores + i) << std::endl; // Output: 1, 2, 3, 4, 5, 0, 0, 0, 0, 0 (default value for double)
+        }
+    }
+    delete[] p_salaries; // Deallocate the memory allocated for the array of doubles
+    delete[] p_students; // Deallocate the memory allocated for the array of integers
+    delete[] p_scores; // Deallocate the memory allocated for the array of doubles
+    p_salaries = nullptr; // Avoid dangling pointer
+    p_students = nullptr; // Avoid dangling pointer
+    p_scores = nullptr; // Avoid dangling pointer
     return 0;
 }
