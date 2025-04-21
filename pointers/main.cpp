@@ -208,14 +208,26 @@ int main(int argc, char const *argv[])
     p_salaries = nullptr; // Avoid dangling pointer
 
     // Static array vs dynamic array
-    int static_array[10] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Static array of integers
+    int static_array[10] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Static array of integers, Lives on the stack
     std::cout << "static_array size: " << std::size(static_array) << std::endl; // Output: 10 (size of the array)
     for (size_t i = 0; i < std::size(static_array); ++i)
     {
         std::cout << "Value at index " << i << ": " << static_array[i] << std::endl; // Output: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
     }
 
-    int *dynamic_array2 = new int[10]; // Dynamically allocate memory for an array of integers
+    int *dynamic_array2 = new int[10] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Dynamically allocate memory for an array of integers (Lives on the heap)
+    // std::cout << "dynamic_array2 size : " << std::size(dynamic_array2) << std::endl; // Error: cannot use std::size on a pointer
+    /* for (auto s : dynamic_array2)
+    {
+        std::cout << "Value at index " << s << ": " << s << std::endl; // Output: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    }
+    */
+    for (size_t i = 0; i < 10; ++i)
+    {
+        std::cout << "Value at index " << i << ": " << *(dynamic_array2 + i) << std::endl; // Output: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    }
+    delete[] dynamic_array2;
+    dynamic_array2 = nullptr;
     
     return 0;
 }
