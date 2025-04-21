@@ -11,6 +11,6 @@ int main() {
     std::cout << "&l : " << &l << std::endl;
     std::cout << "sizeof int: " << sizeof(int) << std::endl;
     std::cout << "sizeof l: " << sizeof(int&) << std::endl; // Output: size of int (usually 4 bytes on 32-bit systems)
-    
+     
     return 0;
 }

@@ -1,5 +1,34 @@
 #include <iostream>
 
+/**
+ * @file main.cpp
+ * @brief Demonstrates various pointer operations in C++ including initialization, 
+ *        dereferencing, dynamic memory allocation, and memory management.
+ * 
+ * This program covers the following topics:
+ * - Pointer initialization and nullptr usage.
+ * - Pointer dereferencing to access and modify values.
+ * - Dynamic memory allocation and deallocation using `new` and `delete`.
+ * - Avoiding dangling pointers by setting pointers to nullptr after deletion.
+ * - Differences between static and dynamic arrays.
+ * - Memory leaks and how to prevent them.
+ * - Verbose nullptr checks and pointer safety practices.
+ * 
+ * Key Concepts:
+ * - Pointers can be reassigned to point to different memory locations.
+ * - Dynamic memory allocation allows creating arrays and variables at runtime.
+ * - Proper memory management is crucial to avoid memory leaks and undefined behavior.
+ * - Static arrays have fixed sizes and live on the stack, while dynamic arrays live on the heap.
+ * 
+ * The program includes examples of:
+ * - Initializing pointers to nullptr.
+ * - Using pointers to access and modify variables.
+ * - Allocating and deallocating memory for arrays and single variables.
+ * - Demonstrating undefined behavior when accessing uninitialized or deleted pointers.
+ * - Comparing static and dynamic arrays in terms of memory allocation.
+ * 
+ * @return int Returns 0 on successful execution.
+ */
 int main(int argc, char const *argv[])
 {
     int *numbers{};
